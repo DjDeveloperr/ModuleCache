@@ -6,7 +6,7 @@ function _cache(): { [name: string]: AnyObject } {
   const val = (globalThis as any).___$GLOBAL_MODULE_CACHE;
   if (typeof val !== "object") {
     (globalThis as any).___$GLOBAL_MODULE_CACHE = {};
-    return {};
+    return (globalThis as any).___$GLOBAL_MODULE_CACHE;
   } else return val;
 }
 
@@ -17,7 +17,7 @@ export class ModuleCache {
     const modCache = _cache();
     if (!modCache[this.name]) {
       modCache[this.name] = {};
-      return {};
+      return modCache[this.name];
     } else return modCache[this.name];
   }
 
