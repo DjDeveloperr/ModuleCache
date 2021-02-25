@@ -3,9 +3,9 @@ export interface AnyObject {
 }
 
 function _cache(): { [name: string]: AnyObject } {
-  const val = (window as any).___$GLOBAL_MODULE_CACHE;
+  const val = (globalThis as any).___$GLOBAL_MODULE_CACHE;
   if (typeof val !== "object") {
-    (window as any).___$GLOBAL_MODULE_CACHE = {};
+    (globalThis as any).___$GLOBAL_MODULE_CACHE = {};
     return {};
   } else return val;
 }
@@ -23,8 +23,6 @@ export class ModuleCache {
 
   constructor(name: string) {
     this.name = name;
-    if (_cache()[name] !== undefined)
-      throw new Error(`Module Cache already registered for ${name}`);
   }
 
   set(key: string, val: any) {
